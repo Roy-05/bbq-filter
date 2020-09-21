@@ -23,17 +23,18 @@ html {
   grid-template-columns: 50% 50%;
 }
 
-table {
+.inner_table_wrapper {
+  text-align: center;
+}
+
+.q_table {
   border-collapse: collapse;
-  width: 100%;
+  width: fit-content;
+  text-align: center;
 }
 
 th,
 td {
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+  text-align: center;
+  padding: 8px 4px;
 }
