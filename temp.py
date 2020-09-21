@@ -2,7 +2,7 @@ import json
 # f = open('assets/verbal_ques.csv', 'r+')
 f_q = open('assets/math_ques.txt', 'r')
 f_v = open('assets/verbal_ques.txt', 'r')
-f = open('assets/data_1.json', 'w+')
+f = open('assets/data1.json', 'w+')
 
 dict1 = {"verbal": {}, "quant": {}}
 dict_v = {}
@@ -37,7 +37,12 @@ for line in f_q:
 dict1["verbal"] = dict_v
 dict1["quant"] = dict_q
 
-json.dump(dict1, f, indent=4, sort_keys=False)
+num = 0
+for key in dict_q:
+    num = num + len(dict_q[key])
+
+# print(num)
+json.dump(dict1, f, indent=4, sort_keys=True)
 
 f.close()
 f_q.close()

@@ -45,22 +45,22 @@ $("#verbal_diff_header").click(() => {
 });
 
 function filterProblems(ll, ul) {
-  $.getJSON("./assets/data.json", function (json) {
+  $.getJSON("./assets/data1.json", function (json) {
     let keys = Object.keys(json["verbal"]).map((x) => Number(x));
-    for (key in keys) {
-      if (key >= ll && key <= ul && json["verbal"][key] !== undefined) {
-        json["verbal"][key].forEach((prob) =>
-          data_verbal.push(`${prob}-${key}`)
-        );
+    keys.forEach((key) => {
+      if (key >= ll && key <= ul) {
+        json["verbal"][key].forEach((prob) => {
+          data_verbal.push(`${prob}-${key}`);
+        });
       }
-    }
+    });
 
     keys = Object.keys(json["quant"]).map((x) => Number(x));
-    for (key in keys) {
+    keys.forEach((key) => {
       if (key >= ll && key <= ul && json["quant"][key] !== undefined) {
         json["quant"][key].forEach((prob) => data_quant.push(`${prob}-${key}`));
       }
-    }
+    });
     createTable("verbal", data_verbal);
     createTable("quant", data_quant);
   });

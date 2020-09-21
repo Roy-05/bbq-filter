@@ -17,16 +17,14 @@ html {
   overflow-x: hidden;
 }
 
-.table_wrapper {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
 .inner_table_wrapper {
   text-align: center;
-  max-width: 425px;
+  max-width: 400px;
+  display: inline;
+}
+
+.table_wrapper {
+  text-align: center;
 }
 
 .q_table {
@@ -40,4 +38,5 @@ th,
 td {
   text-align: center;
   padding: 8px 24px;
+  border: 1px black solid;
 }
