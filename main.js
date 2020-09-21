@@ -23,15 +23,21 @@ $("#submit").click(() => {
 });
 
 $("#quant_table_header").click(() => {
-  console.log("fire");
   data_quant.sort();
   $(".row").empty();
 
   createTable();
 });
 
+$("#verbal_table_header").click(() => {
+  verbal_quant.sort();
+  $(".row").empty();
+
+  createTable();
+});
+
 function filterProblems(ll, ul) {
-  $.getJSON("./assets/data_1.json", function (json) {
+  $.getJSON("./assets/data.json", function (json) {
     let keys = Object.keys(json["verbal"]).map((x) => Number(x));
     for (key in keys) {
       if (key >= ll && key <= ul && json["verbal"][key] !== undefined) {
