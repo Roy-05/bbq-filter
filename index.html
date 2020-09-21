@@ -3,19 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <title>Big Book Filter</title>
+    <link rel="stylesheet" href="./main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script src="main.js" defer></script>
   </head>
   <body>
     <div class="page_wrapper">
-      <div class="input_form_wrapper">
-        <div id="title">Enter the range of difficulty:</div>
-      </div>
-      <div>
-        <input type="text" id="lower_limit" />
-        <input type="text" id="upper_limit" />
-      </div>
-      <div id="submit_container">
-        <button id="submit">Filter!</button>
+      <div class="page_inner_wrapper">
+        <div id="title">Filter Big Book Questions!</div>
+        <div class="input_form_wrapper">
+          <div id="title">Enter the range of difficulty:</div>
+          <div>
+            <input type="text" id="lower_limit" value="0" />
+            <input type="text" id="upper_limit" value="100" />
+          </div>
+          <div id="submit_container">
+            <button id="submit">Filter!</button>
+          </div>
+        </div>
+        <div class="table_wrapper">
+          <div>
+            <table id="problems_verbal"></table>
+          </div>
+          <div>
+            <table id="problems_quant"></table>
+          </div>
+        </div>
       </div>
     </div>
   </body>
