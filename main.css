@@ -14,6 +14,7 @@ html {
   width: 100%;
   display: grid;
   grid-template-rows: 10% 15% 75%;
+  overflow-x: hidden;
 }
 
 .table_wrapper {

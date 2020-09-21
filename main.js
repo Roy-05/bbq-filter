@@ -1,14 +1,10 @@
-const lower_limit = document.getElementById("lower_limit"),
-  upper_limit = document.getElementById("upper_limit");
-
 let upper_limit_val = 100,
   lower_limit_val = 0,
   data_verbal = [],
   data_quant = [];
 
 $("#submit").click(() => {
-  $(".row").empty();
-
+  // $(".row").empty();
   data_verbal = [];
   data_quant = [];
 
@@ -23,17 +19,29 @@ $("#submit").click(() => {
 });
 
 $("#quant_table_header").click(() => {
-  data_quant.sort();
-  $(".row").empty();
+  let data_quant_copy = [...data_quant];
+  data_quant_copy.sort();
+  $(".row_quant").empty();
 
-  createTable();
+  createTable("quant", data_quant_copy);
+});
+
+$("#quant_diff_header").click(() => {
+  $(".row_quant").empty();
+  createTable("quant", data_quant);
 });
 
 $("#verbal_table_header").click(() => {
-  verbal_quant.sort();
-  $(".row").empty();
+  let data_verbal_copy = [...data_verbal];
+  data_verbal_copy.sort();
+  $(".row_verbal").empty();
 
-  createTable();
+  createTable("verbal", data_verbal_copy);
+});
+
+$("#verbal_diff_header").click(() => {
+  $(".row_verbal").empty();
+  createTable("verbal", data_verbal);
 });
 
 function filterProblems(ll, ul) {
@@ -53,44 +61,26 @@ function filterProblems(ll, ul) {
         json["quant"][key].forEach((prob) => data_quant.push(`${prob}-${key}`));
       }
     }
-    createTable();
+    createTable("verbal", data_verbal);
+    createTable("quant", data_quant);
   });
 }
 
-function createTable() {
-  if (data_verbal.length === 0) {
-    $("#problems_verbal").append(
+function createTable(table_type, data) {
+  if (data.length === 0) {
+    $(`#problems_${table_type}`).append(
       `
-      <tr class="row row_verbal">
+      <tr class="row row_${table_type}">
         <td>No Questions in the given range!</td>
       </tr>
       `
     );
   } else {
-    data_verbal.forEach((prob) => {
+    data.forEach((prob) => {
       prob_info = prob.split("-");
-      $("#problems_verbal").append(
+      $(`#problems_${table_type}`).append(
         `
-      <tr class="row row_verbal">
-        <td>Test ${prob_info[0]} Section ${prob_info[1]} Q. ${prob_info[2]}</td>
-        <td>${prob_info[3]}</td>
-      </tr>`
-      );
-    });
-  }
-  if (data_quant.length === 0) {
-    $("#problems_quant").append(
-      `
-      <tr class="row row_quant">
-        <td>No Questions in the given range!</td>
-      </tr>`
-    );
-  } else {
-    data_quant.forEach((prob) => {
-      prob_info = prob.split("-");
-      $("#problems_quant").append(
-        `
-      <tr class="row row_quant">
+      <tr class="row row_${table_type}">
         <td>Test ${prob_info[0]} Section ${prob_info[1]} Q. ${prob_info[2]}</td>
         <td>${prob_info[3]}</td>
       </tr>`
