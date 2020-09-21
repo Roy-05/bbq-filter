@@ -4,7 +4,7 @@ let upper_limit_val = 100,
   data_quant = [];
 
 $("#submit").click(() => {
-  // $(".row").empty();
+  $(".row").empty();
   data_verbal = [];
   data_quant = [];
 
