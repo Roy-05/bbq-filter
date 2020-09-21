@@ -3,6 +3,8 @@ let upper_limit_val = 100,
   data_verbal = [],
   data_quant = [];
 
+$(document).ready(filterProblems(lower_limit_val, upper_limit_val));
+
 $("#submit").click(() => {
   $(".row").empty();
   data_verbal = [];
