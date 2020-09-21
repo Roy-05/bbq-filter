@@ -8,8 +8,22 @@ html {
   padding: 0;
   margin: 0;
   font-family: Ubuntu-Bold;
-  background-color: #fffff6;
-  font-size: 18px;
+  background-color: rgb(255, 255, 246);
+  font-size: min(2vw, 18px);
+}
+
+input[type="text"] {
+  width: 75px;
+  text-align: center;
+  font-family: Ubuntu-Bold;
+  border: none;
+  border-bottom: 2px solid black;
+  background-color: inherit;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 2px solid black;
 }
 
 button {
@@ -22,24 +36,20 @@ button {
 }
 
 img {
-  height: 12px;
-  width: 12px;
+  height: min(12px, 1.5vw);
+  width: min(12px, 1.5vw);
 }
 
-#submit:hover {
-  color: white;
-  background: rgb(0, 90, 4, 0.9);
-  transition: 0.5s;
+th,
+td {
+  text-align: center;
+  padding: min(1vw, 8px) min(2vw, 24px);
 }
 
-#submit {
-  margin: 0 10px;
-  font-size: 16px;
-  letter-spacing: 3px;
-  background: rgba(0, 0, 0, 0.05);
-  box-shadow: 1px 1px 1px 1px;
-  border-radius: 5px;
+th {
+  background-color: rgb(144, 238, 144);
 }
+
 .page_wrapper {
   height: 100vh;
   width: 100vw;
@@ -49,13 +59,32 @@ img {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 10% 15% 75%;
+  grid-template-rows: 5% 20% 75%;
   overflow-x: hidden;
+}
+
+#title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: min(5vw, 45px);
+}
+
+#form-heading {
+  font-size: min(4vw, 18px);
+}
+
+.input_form_wrapper {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .inner_table_wrapper {
   text-align: center;
-  max-width: 400px;
   display: inline;
 }
 
@@ -70,14 +99,13 @@ img {
   width: fit-content;
 }
 
-th,
-td {
-  text-align: center;
-  padding: 8px 24px;
-}
-
-th {
-  background-color: lightgreen;
+#submit {
+  padding: min(1vw, 8px);
+  font-size: min(16px, 3vw);
+  letter-spacing: 2.5px;
+  background: inherit;
+  box-shadow: 1px 1px 1px 1px;
+  border-radius: 5px;
 }
 
 .border_left {
@@ -88,6 +116,16 @@ th {
   border-radius: 0px 10px 0px 0px;
 }
 
-th:hover {
-  cursor: pointer;
+@media (hover: hover) {
+  #submit:hover {
+    color: white;
+    background: rgb(0, 90, 4, 0.9);
+    transition: 0.5s;
+  }
+
+  th:hover {
+    cursor: pointer;
+    background: rgb(98, 208, 98);
+    transition: 0.5s;
+  }
 }
