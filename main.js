@@ -1,7 +1,8 @@
 let upper_limit_val = 100,
   lower_limit_val = 0,
   data_verbal = [],
-  data_quant = [];
+  data_quant = [],
+  page_dict = {};
 
 $(document).ready(filterProblems(lower_limit_val, upper_limit_val));
 
@@ -48,6 +49,7 @@ $("#verbal_diff_header").click(() => {
 
 function filterProblems(ll, ul) {
   $.getJSON("./assets/data1.json", function (json) {
+    page_dict = json["page"];
     let keys = Object.keys(json["verbal"]).map((x) => Number(x));
     keys.forEach((key) => {
       if (key >= ll && key <= ul) {
@@ -83,7 +85,12 @@ function createTable(table_type, data) {
       $(`#problems_${table_type}`).append(
         `
       <tr class="row row_${table_type}">
-        <td>Test ${prob_info[0]} Section ${prob_info[1]} Q. ${prob_info[2]}</td>
+        <td>
+          Test ${prob_info[0]} 
+          Section ${prob_info[1]}
+          Q. ${prob_info[2]}, 
+          p. ${page_dict[`${prob_info[0]}-${prob_info[1]}`]}
+        </td>
         <td>${prob_info[3]}</td>
       </tr>`
       );
